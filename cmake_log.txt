@@ -1,0 +1,55 @@
+-- Using Gamma from: .
+-- Allosystem: Gamma sources with CMakeLists found. Building Gamma.
+-- ==== Configuring Gamma.
+-- Found Portaudio: /usr/lib/x86_64-linux-gnu/libportaudio.so
+-- checking for module 'libsndfile'
+--   package 'libsndfile' not found
+-- Portaudio: /usr/lib/x86_64-linux-gnu/libportaudio.so  
+-- libsndfile: /usr/lib/x86_64-linux-gnu/libsndfile.so
+-- threading: -lpthread
+-- Using cuttlebone from: .
+-- Allosystem: cuttlebone sources with CMakeLists found. Building cuttlebone.
+-- Allosystem: Phasespace sources NOT found. Can't build Phasespace.
+-- checking for module 'libPhasespace'
+--   package 'libPhasespace' not found
+-- ==== Configuring allocore.
+-- Found UDEV 
+-- Found libusb-1.0:
+--  - Includes: /usr/include
+--  - Libraries: /usr/lib/x86_64-linux-gnu/libusb-1.0.so
+-- Building OpenGL module (OpenGL + GLEW).
+-- Building GLUT module.
+-- Building font module.
+-- Building freeimage module.
+-- Building assimp module.
+-- checking for module 'libapr'
+--   package 'libapr' not found
+-- checking for module 'libaprutil'
+--   package 'libaprutil' not found
+-- Building APR module.
+-- Building Portaudio module.
+-- checking for module 'libsndfile'
+--   package 'libsndfile' not found
+-- Building libsndfile module.
+-- Building OSC module.
+-- Building Linux Zeroconf module.
+-- ==== Configuring alloutil
+-- checking for module 'jsoncpp'
+--   package 'jsoncpp' not found
+-- ==== Configuring alloGLV
+-- checking for module 'libapr'
+--   package 'libapr' not found
+-- checking for module 'libaprutil'
+--   package 'libaprutil' not found
+-- checking for module 'libGLV'
+--   package 'libGLV' not found
+-- ==== Configuring alloaudio.
+-- checking for module 'libsndfile'
+--   package 'libsndfile' not found
+-- Not using fftw3.
+-- Target: src
+-- From sources: /home/kurt/Alloprojects/fludyn/src/main.cpp
+-- Not building Phasespace and no usable Phasespace binary found. Not linking application to Phasespace
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/kurt/Alloprojects/fludyn
