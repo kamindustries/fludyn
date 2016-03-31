@@ -1,6 +1,7 @@
 [submodule "AlloSystem"]
 	path = AlloSystem
 	url = https://github.com/AlloSphere-Research-Group/AlloSystem.git
+	branch = cuda
 [submodule "GLV"]
 	path = GLV
 	url = https://github.com/AlloSphere-Research-Group/GLV.git
