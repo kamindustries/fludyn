@@ -3,7 +3,7 @@
 void initCUDA(cudaGraphicsResource_t cgrTx, GLuint txBuffer) {
   // checkCudaErrors( cudaSetDevice(gpuGetMaxGflopsDeviceId()) );
   // checkCudaErrors( cudaGLSetGLDevice(gpuGetMaxGflopsDeviceId()) );
-  cudaGraphicsGLRegisterBuffer( &cgrTx, txBuffer, cudaGraphicsMapFlagsWriteDiscard );
+  checkCudaErrors( cudaGraphicsGLRegisterBuffer(&cgrTx, txBuffer, cudaGraphicsMapFlagsWriteDiscard) );
   // cudaGraphicsGLRegisterBuffer( &cgrVertData, vertexArrayID, cudaGraphicsMapFlagsWriteDiscard );
 
   cudaMalloc((void**)&chemA, sizeof(float)*size);

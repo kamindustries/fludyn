@@ -38,22 +38,19 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
-# The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/ccmake
-
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kurt/Alloprojects/fludyn
+CMAKE_SOURCE_DIR = /home/admin/kurt/alloprojects/fludyn
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kurt/Alloprojects/fludyn
+CMAKE_BINARY_DIR = /home/admin/kurt/alloprojects/fludyn
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running interactive CMake command-line interface..."
+	/usr/bin/cmake -i .
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -113,9 +110,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kurt/Alloprojects/fludyn/CMakeFiles /home/kurt/Alloprojects/fludyn/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/admin/kurt/alloprojects/fludyn/CMakeFiles /home/admin/kurt/alloprojects/fludyn/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kurt/Alloprojects/fludyn/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/admin/kurt/alloprojects/fludyn/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -468,6 +465,19 @@ allocoreTests/fast:
 .PHONY : allocoreTests/fast
 
 #=============================================================================
+# Target rules for targets named alloutil
+
+# Build rule for target.
+alloutil: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 alloutil
+.PHONY : alloutil
+
+# fast build rule for target.
+alloutil/fast:
+	$(MAKE) -f AlloSystem/alloutil/CMakeFiles/alloutil.dir/build.make AlloSystem/alloutil/CMakeFiles/alloutil.dir/build
+.PHONY : alloutil/fast
+
+#=============================================================================
 # Target rules for targets named alloGLV
 
 # Build rule for target.
@@ -543,6 +553,7 @@ help:
 	@echo "... allocore"
 	@echo "... doc"
 	@echo "... allocoreTests"
+	@echo "... alloutil"
 	@echo "... alloGLV"
 	@echo "... alloaudio"
 	@echo "... alloaudioTests"

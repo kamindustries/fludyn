@@ -76,6 +76,8 @@ bool hasRunOnce = false;
 bool writeData = false;
 
 
+Mesh sphere;
+
 void initVariables() {
   size = dimX * dimY;
   threads = dim3(16,16);
@@ -98,8 +100,8 @@ void initVariables() {
 ///////////////////////////////////////////////////////////////////////////////
 void initGL() {
   // Framebuffer
-  glGenFramebuffersEXT(1, &fboID);
-  glBindFramebufferEXT(GL_FRAMEBUFFER, fboID);
+  // glGenFramebuffersEXT(1, &fboID);
+  // glBindFramebufferEXT(GL_FRAMEBUFFER, fboID);
 
   // Framebuffer's texture
   glEnable(GL_TEXTURE_2D);
@@ -154,7 +156,7 @@ void initGL() {
 
 static void pre_display ( void ) {
   // bind a framebuffer and render everything afterwards into that
-  glBindFramebufferEXT(GL_FRAMEBUFFER, fboID);
+  // glBindFramebufferEXT(GL_FRAMEBUFFER, fboID);
   glViewport ( 0, 0, win_x, win_y );
   glMatrixMode ( GL_PROJECTION );
   glLoadIdentity ();
@@ -165,7 +167,7 @@ static void pre_display ( void ) {
 
 static void post_display ( void ) {
   // unbind the framebuffer and draw its texture
-  glBindFramebufferEXT(GL_FRAMEBUFFER, 0);
+  // glBindFramebufferEXT(GL_FRAMEBUFFER, 0);
 
   glColor3f(1,1,1);
   glEnable(GL_TEXTURE_2D);
@@ -198,6 +200,7 @@ static void post_display ( void ) {
 }
 
 void draw_density() {
+  // glColor3f(1,1,1);
   glEnable(GL_TEXTURE_2D);
   glBindBuffer(GL_PIXEL_UNPACK_BUFFER_ARB, bufferObj);
   glBindTexture(GL_TEXTURE_2D, textureID);
@@ -213,8 +216,8 @@ void draw_density() {
     glVertex3f(1.0,1.0,0.0);
   glEnd();
 
-  glBindBuffer(GL_PIXEL_UNPACK_BUFFER_ARB, 0);
-  glDisable(GL_TEXTURE_2D);
+  // glBindBuffer(GL_PIXEL_UNPACK_BUFFER_ARB, 0);
+  // glDisable(GL_TEXTURE_2D);
 }
 
 class MyApp : public App{
@@ -239,12 +242,12 @@ public:
     initCUDA(cgrTxData, bufferObj);
 
     initGPUArrays();
+
+    // addSphere(sphere);
 	}
 
 	// ANIMATE
 	virtual void onAnimate(double dt){
-    drawSquare(chemB, 1.0);
-    makeColor(chemB, displayPtr);
 
     // if (frameNum > 0 && togSimulate) {
     //   get_from_UI(chemA_prev, chemB_prev, u_prev, v_prev);
@@ -254,7 +257,6 @@ public:
     //   MakeVerticesKernel<<<grid,threads>>>(displayVertPtr, u, v);
     // }
     //
-    getMappedPointer(displayPtr, cgrTxData);
 
     //
     // cudaGraphicsMapResources( 1, &cgrVertData, 0 );
@@ -268,11 +270,16 @@ public:
 
 	// DRAW
 	virtual void onDraw(Graphics& g, const Viewpoint& v){
-    pre_display();
+    drawSquare(chemB, 1.0);
+    makeColor(chemB, displayPtr);
+    getMappedPointer(displayPtr, cgrTxData);
 
+    pre_display();
     draw_density();
 
-    post_display();
+    // post_display();
+
+    // g.draw(sphere);
 	}
 
 

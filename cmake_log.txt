@@ -34,8 +34,10 @@
 -- Building OSC module.
 -- Building Linux Zeroconf module.
 -- ==== Configuring alloutil
--- checking for module 'jsoncpp'
---   package 'jsoncpp' not found
+-- Found Jsoncpp 
+-- checking for module 'libCuttlebone'
+--   package 'libCuttlebone' not found
+-- Found CUTTLEBONE 
 -- ==== Configuring alloGLV
 -- checking for module 'libapr'
 --   package 'libapr' not found
@@ -48,8 +50,8 @@
 --   package 'libsndfile' not found
 -- Not using fftw3.
 -- Target: src
--- From sources: /home/kurt/Alloprojects/fludyn/src/main.cpp
+-- From sources: /home/admin/kurt/alloprojects/fludyn/src/main.cpp
 -- Not building Phasespace and no usable Phasespace binary found. Not linking application to Phasespace
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/kurt/Alloprojects/fludyn
+-- Build files have been written to: /home/admin/kurt/alloprojects/fludyn

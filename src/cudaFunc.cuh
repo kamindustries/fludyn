@@ -3,6 +3,7 @@
 
 #include <cuda_runtime_api.h>
 #include <cuda_gl_interop.h>
+#include <helper_cuda.h>         // helper functions for CUDA error check
 #include "common.cuh"
 #include "kernels.cuh"
 
