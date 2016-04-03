@@ -136,6 +136,6 @@ __global__ void
 AddLaplacian( float *_chem, float *_lap, int w, int h);
 
 __global__ void
-React( float *_chemA, float *_chemB, float *F_input, float *rd, int *_boundary, float dt, int w, int h);
+React( float *_chemA, float *_chemB, int *_boundary, float dt, int w, int h);
 
 #endif

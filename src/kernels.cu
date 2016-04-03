@@ -141,7 +141,7 @@ DrawSquare( float *field, float value, int w, int h ) {
 
 	float posX = (float)x/w;
 	float posY = (float)y/h;
-	if ( posX < .92 && posX > .45 && posY < .51 && posY > .495 ) {
+	if ( posX < .92 && posX > .45 && posY < .51 && posY > .195 ) {
 		field[id] = value;
 	}
 }
@@ -583,14 +583,14 @@ AddLaplacian( float *_chem, float *_lap, int w, int h)
 	_chem[id] += _lap[id];
 }
 
-__global__ void React( float *_chemA, float *_chemB, float *F_input, float *rd, int *_boundary, float dt, int w, int h) {
+__global__ void React( float *_chemA, float *_chemB, int *_boundary, float dt, int w, int h) {
 	int x = getX(w);
 	int y = getY(h);
 	int id = IX(x,y);
 
 	if (checkBounds(_boundary, x, y, w, h)) {
-		//float F = 0.05;
-		//float k = 0.0675;
+		float F = 0.05;
+		float k = 0.0675;
 		//float F = 0.0140;
 		//float k = 0.0490;
 		//float F = 0.0545;
@@ -600,8 +600,8 @@ __global__ void React( float *_chemA, float *_chemB, float *F_input, float *rd, 
 		//
 		//float k = 1.0 - (F_input[id]&0xff/255);
 		//k = fitRange(k, 0.0, 1.0, 0.05, 0.068);
-		float F = rd[0];
-		float k = rd[1];
+		// float F = rd[0];
+		// float k = rd[1];
 
 		float A = _chemA[id];
 		float B = _chemB[id];
@@ -612,7 +612,9 @@ __global__ void React( float *_chemA, float *_chemB, float *F_input, float *rd, 
 		_chemB[id] += (dt * reactionB);
 	}
 	else {
-		_chemA[id] *= -1.0;
-		_chemB[id] *= -1.0;
+		// _chemA[id] *= -1.0;
+		// _chemB[id] *= -1.0;
+		_chemA[id] = 0.0;
+		_chemB[id] = 0.0;
 	}
 }
